@@ -28,7 +28,7 @@ namespace OM
 		"out vec4 frag_colour;"
 		"in vec4 position;"
 		"void main() {"
-		"  frag_colour = vec4(1.0, 1.0, 1.0, 1.0);"
+		"  frag_colour = vec4(0.0, 1.0, 1.0, 1.0);"
 		"if (position.x < 0.48 && position.x > -0.48 &&  position.y < 0.48 && position.y > -0.48 && position.z < 0.48 && position.z > -0.48)"
 		"{"
 		"  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
@@ -106,10 +106,10 @@ namespace OM
 			0.5f, -0.5f, -0.5f,
 			-0.5f, -0.5f, -0.5f,
 
-			-0.5f, 0.5f, -0.5f,
-			0.5f, 0.5f, -0.5f,
-			0.5f, -0.5f, -0.5f,
-			-0.5f, -0.5f, -0.5f,
+			-0.5f, 0.5f, 0.5f,
+			0.5f, 0.5f, 0.5f,
+			0.5f, -0.5f, 0.5f,
+			-0.5f, -0.5f, 0.5f,
 
 		};
 
@@ -182,16 +182,16 @@ namespace OM
 		glLoadIdentity();
 		
 		gluLookAt(
-		0.0f, 1.0f, 20.0f,
-		0.0f, -1.0f, 0.0f,
+		0.0f, 2.0f, 4.0f,
+		0.0f, 0.0f, 0.0f,
 		0.0f, 1.0f, 0.0f
 		);
 		
-		glUseProgram(shader_programme);
+		//glUseProgram(shader_programme);
 
 		// bind the VAO (the triangle)
-		angle += 0.5f;
-		glRotatef(angle, -1.0f, 0.0f, 0.0f);
+		angle += 0.1f;
+		glRotatef(angle, 0.0f, -1.0f, 0.0f);
 		glBindVertexArray(vao);
 		GLenum clearError = glGetError();
 		// draw the VAO
@@ -203,7 +203,7 @@ namespace OM
 			printf("error: %d: %s\n", err, gluErrorString(err));
 		}
 
-		glColor3d(244, 244, 244);
+		//glColor3d(244, 244, 244);
 
 		// unbind the VAO, the program and the texture
 		glBindVertexArray(0);
